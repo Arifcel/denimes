@@ -7,6 +7,8 @@
 .page-portfolio {
   /* Opaque hairline, so overlapping tile edges do not double up */
   --portfolio-line: color-mix(in srgb, var(--fg) 16%, var(--bg));
+  /* Tiles veil the globe so the company names stay easy to read */
+  --portfolio-tile-fill: color-mix(in srgb, var(--bg) 82%, transparent);
   --portfolio-pad: 30px;
 }
 
@@ -137,6 +139,7 @@
   min-width: 0;
   margin: -1px 0 0 -1px;
   border: 1px solid var(--portfolio-line);
+  background: var(--portfolio-tile-fill);
   container-type: inline-size;
   color: var(--fg);
 }

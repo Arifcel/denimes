@@ -2,7 +2,7 @@
 // Usage: node .claude/serve.mjs [port]
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
-import { extname, join, normalize, resolve, dirname } from 'node:path';
+import { extname, join, normalize, resolve, dirname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -28,7 +28,8 @@ createServer(async (req, res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
     let file = normalize(join(root, pathname));
-    if (!file.startsWith(root)) {
+    // Stay inside the project folder and keep dotfiles (.git, .claude) private
+    if ((file !== root && !file.startsWith(root + sep)) || pathname.split('/').some((s) => s.startsWith('.'))) {
       res.writeHead(403).end('Forbidden');
       return;
     }

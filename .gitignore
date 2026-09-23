@@ -13,3 +13,8 @@
 # Dependencies and logs
 node_modules/
 *.log
+
+# Vercel CLI and local env files
+.vercel/
+.env
+.env*.local
