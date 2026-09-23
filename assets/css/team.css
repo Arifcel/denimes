@@ -1,0 +1,314 @@
+/* ==========================================================================
+   Denimes — team page
+   Light paper page: faint dotted globe behind the title, then square
+   duotone portrait cards in a three-column grid split by 1px paper lines.
+   ========================================================================== */
+
+.page-team {
+  --team-inset: 20px;                   /* card text distance from edges */
+  --team-line: 1px;                     /* paper line between cards */
+  --team-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.team-hero {
+  position: relative;
+  padding: calc(var(--header-h) + 42px) var(--gutter) 0;
+  text-align: center;
+}
+
+/* One screen tall, so the globe also sits behind the first row of cards */
+.team-hero__globe {
+  bottom: auto;
+  height: 100vh;
+  height: 100svh;
+  max-height: 1000px;
+}
+
+.team-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.team-hero__eyebrow {
+  color: var(--wine);
+}
+
+.team-hero__eyebrow::after {
+  background: rgba(122, 31, 43, 0.45);
+}
+
+.team-hero__title {
+  max-width: 720px;
+  margin-top: 20px;
+  text-wrap: balance;
+}
+
+.team-hero__intro {
+  max-width: 39rem;
+  margin-top: 22px;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.08rem, 0.35vw + 0.98rem, 1.28rem);
+  line-height: 1.5;
+  color: var(--fg-soft);
+  text-wrap: pretty;
+}
+
+/* --------------------------------------------------------------------------
+   Groups and grid
+   -------------------------------------------------------------------------- */
+
+.team-group {
+  padding: 0 var(--gutter);
+}
+
+.team-group__title {
+  margin: clamp(36px, 3.4vw, 48px) 0 clamp(22px, 2.2vw, 30px);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.45rem, 0.9vw + 1.05rem, 1.8rem);
+  line-height: 1.2;
+  letter-spacing: 0.002em;
+  text-align: center;
+}
+
+.team-group--firm .team-group__title {
+  margin-top: clamp(64px, 7vw, 104px);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--team-line);
+}
+
+/* --------------------------------------------------------------------------
+   Card
+   -------------------------------------------------------------------------- */
+
+.team-card {
+  --tone-hi: #bcb5a7;
+  --tone-lo: #6c665c;
+  --light-x: 50%;
+  --light-y: 32%;
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  color: var(--white);
+}
+
+/* Palette: stone, slate, wine, moss, sand, graphite */
+.team-card:nth-child(6n+2) { --tone-hi: #aeb5bf; --tone-lo: #58616e; --light-x: 38%; }
+.team-card:nth-child(6n+3) { --tone-hi: #bba6a2; --tone-lo: #6a3b41; --light-x: 62%; --light-y: 28%; }
+.team-card:nth-child(6n+4) { --tone-hi: #adb3a8; --tone-lo: #4a544d; --light-x: 58%; }
+.team-card:nth-child(6n+5) { --tone-hi: #c3b49e; --tone-lo: #75644f; --light-x: 42%; --light-y: 26%; }
+.team-card:nth-child(6n+6) { --tone-hi: #aaa9a4; --tone-lo: #474643; --light-x: 66%; --light-y: 34%; }
+
+.team-group--firm .team-card:nth-child(6n+1) { --tone-hi: #aeb5bf; --tone-lo: #58616e; --light-x: 60%; }
+.team-group--firm .team-card:nth-child(6n+2) { --tone-hi: #c3b49e; --tone-lo: #75644f; --light-x: 50%; }
+.team-group--firm .team-card:nth-child(6n+3) { --tone-hi: #adb3a8; --tone-lo: #4a544d; --light-x: 36%; }
+.team-group--firm .team-card:nth-child(6n+4) { --tone-hi: #bba6a2; --tone-lo: #6a3b41; --light-x: 44%; }
+.team-group--firm .team-card:nth-child(6n+5) { --tone-hi: #aaa9a4; --tone-lo: #474643; --light-x: 64%; }
+.team-group--firm .team-card:nth-child(6n+6) { --tone-hi: #bcb5a7; --tone-lo: #6c665c; --light-x: 52%; }
+
+.team-card:nth-child(3n+2) { --reveal-delay: .08s; }
+.team-card:nth-child(3n) { --reveal-delay: .16s; }
+
+/* Generative stand-in for a portrait photo */
+.team-card__portrait {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20%;
+  background:
+    radial-gradient(58% 52% at var(--light-x) var(--light-y), rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0) 72%),
+    radial-gradient(46% 30% at 50% 104%, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0) 100%),
+    linear-gradient(165deg, var(--tone-hi) 0%, var(--tone-lo) 100%);
+  filter: brightness(0.8);
+  mix-blend-mode: multiply;
+  opacity: 0.95;
+  transition: filter 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+
+.team-card__portrait::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--team-grain);
+  opacity: 0.22;
+}
+
+.team-card__initials {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6.4vw, 7rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.68);
+  font-variation-settings: "opsz" 72;
+}
+
+.team-card:hover .team-card__portrait {
+  filter: brightness(1);
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+/* Darkened bottom third keeps the white text legible */
+.team-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 36%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4) 50%, #000);
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.team-card__text {
+  position: absolute;
+  left: var(--team-inset);
+  right: var(--team-inset);
+  bottom: var(--team-inset);
+  z-index: 2;
+}
+
+.team-card__name {
+  margin-bottom: 2px;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.125rem, 1vw + 0.85rem, 1.75rem);
+  line-height: 1.15;
+  font-variation-settings: "opsz" 48;
+}
+
+.team-card__role {
+  font-size: clamp(0.875rem, 0.35vw + 0.8rem, 1.125rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.team-card__bio {
+  max-width: 34ch;
+  margin-top: 8px;
+  font-size: var(--fs-small);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--white-soft);
+}
+
+.team-group + .up-next {
+  padding-top: clamp(72px, 9vw, 120px);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-card:nth-child(3n+2),
+  .team-card:nth-child(3n) {
+    --reveal-delay: 0s;
+  }
+
+  .team-card:nth-child(2n) {
+    --reveal-delay: .08s;
+  }
+
+  /* An odd card out becomes a wide banner instead of leaving a gap */
+  .team-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    aspect-ratio: 2 / 1;
+  }
+
+  /* Padding is a share of the width, so halve it on the 2:1 banner */
+  .team-card:last-child:nth-child(odd) .team-card__portrait {
+    padding-bottom: 10%;
+  }
+
+  .team-card:last-child:nth-child(odd) .team-card__initials {
+    width: 23%;
+  }
+
+  .team-card__initials {
+    font-size: clamp(2.6rem, 9vw, 5.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-team {
+    --team-inset: 15px;
+  }
+
+  .team-hero {
+    padding-top: calc(var(--header-h) + 26px);
+  }
+
+  .team-hero__globe {
+    height: 620px;
+  }
+
+  /* Grid runs edge to edge on small screens */
+  .team-group {
+    padding: 0;
+  }
+
+  .team-group__title {
+    padding: 0 var(--gutter);
+  }
+
+  .team-card__name {
+    margin-bottom: 3px;
+  }
+}
+
+/* Small cards: lift and shrink the ring so two-line roles clear it */
+@media (max-width: 600px) {
+  .team-card__portrait {
+    padding-bottom: 36%;
+  }
+
+  .team-card__initials {
+    width: 38%;
+    font-size: clamp(2.1rem, 10vw, 2.6rem);
+  }
+}
+
+/* Bio stays available to screen readers where the cards are too small for it */
+@media (min-width: 901px) and (max-width: 1100px), (max-width: 600px) {
+  .team-card__bio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}

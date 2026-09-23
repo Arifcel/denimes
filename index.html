@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="footer-fixed">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Denimes</title>
+  <meta name="description" content="Denimes is an investment firm backing founders who build for the long term.">
+  <meta name="theme-color" content="#dcddd6">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body class="page-home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Denimes, home">Denimes</a>
+    <div class="header-actions">
+      <a class="login-link" href="login.html">Login</a>
+      <button class="menu-toggle" type="button" aria-controls="site-menu" aria-expanded="false" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="menu-overlay" id="site-menu" aria-label="Main" aria-hidden="true">
+    <ul>
+      <li><a href="thesis.html">Thesis</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="partners.html">Partners</a></li>
+    </ul>
+    <div class="menu-meta">
+      <span>&copy; Denimes <span data-year>2026</span></span>
+      <a href="mailto:hello@example.com" data-placeholder="contact-email">hello@example.com</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="home-hero">
+      <div class="globe-layer" aria-hidden="true">
+        <canvas data-globe data-color="120,134,158" data-alpha="0.95" data-scale="0.36" data-scale-w="0.6" data-rim="0.55" data-speed="0.045"></canvas>
+      </div>
+
+      <div class="home-hero__inner">
+        <h1 class="display-serif home-hero__title reveal">
+          <span class="line">Patient capital for founders</span>
+          <span class="line">building what lasts</span>
+        </h1>
+        <a class="bracket-link reveal" style="--reveal-delay: .25s" href="portfolio.html">Explore our portfolio</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span>&copy; Denimes <span data-year>2026</span></span>
+      <a class="legal-link" href="legal.html">Legal.</a>
+    </div>
+    <address data-placeholder="address">[Street address], [City]</address>
+  </footer>
+
+  <script src="assets/js/globe-data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

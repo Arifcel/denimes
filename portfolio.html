@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio — Denimes</title>
+  <meta name="description" content="The companies Denimes backs, from early software and fintech teams to health, climate, consumer and industrial businesses. Filter the grid by sector.">
+  <meta name="theme-color" content="#2d2d2d">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body class="page-portfolio">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Denimes, home">Denimes</a>
+    <span class="header-rule" aria-hidden="true"></span>
+    <div class="header-actions">
+      <a class="login-link" href="login.html">Login</a>
+      <button class="menu-toggle" type="button" aria-controls="site-menu" aria-expanded="false" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="menu-overlay" id="site-menu" aria-label="Main" aria-hidden="true">
+    <ul>
+      <li><a href="thesis.html">Thesis</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="partners.html">Partners</a></li>
+    </ul>
+    <div class="menu-meta">
+      <span>&copy; Denimes <span data-year>2026</span></span>
+      <a href="mailto:hello@example.com" data-placeholder="contact-email">hello@example.com</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="globe-layer portfolio-globe" aria-hidden="true">
+      <canvas data-globe data-color="196,200,210" data-alpha="0.55" data-scale="0.36" data-scale-w="0.8" data-rim="0.4" data-speed="0.04" data-start="-1.2"></canvas>
+    </div>
+
+    <section class="portfolio-hero">
+      <p class="eyebrow eyebrow-stack reveal">Companies we back</p>
+      <h1 class="page-title portfolio-hero__title reveal" style="--reveal-delay: .12s" data-placeholder="sample-copy">
+        <span class="line">Teams we stand beside,</span>
+        <span class="line">from the first cheque on</span>
+      </h1>
+    </section>
+
+    <section class="portfolio-directory" aria-labelledby="portfolio-directory-title">
+      <h2 class="visually-hidden" id="portfolio-directory-title">Portfolio companies</h2>
+
+      <div class="portfolio-filters reveal" style="--reveal-delay: .24s" role="group" aria-label="Filter companies by sector" data-portfolio-filters>
+        <button class="portfolio-filters__button" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="portfolio-filters__button" type="button" data-filter="software" aria-pressed="false">Software</button>
+        <button class="portfolio-filters__button" type="button" data-filter="fintech" aria-pressed="false">Fintech</button>
+        <button class="portfolio-filters__button" type="button" data-filter="health" aria-pressed="false">Health</button>
+        <button class="portfolio-filters__button" type="button" data-filter="climate" aria-pressed="false">Climate</button>
+        <button class="portfolio-filters__button" type="button" data-filter="consumer" aria-pressed="false">Consumer</button>
+        <button class="portfolio-filters__button" type="button" data-filter="industrial" aria-pressed="false">Industrial</button>
+      </div>
+      <p class="visually-hidden" aria-live="polite" data-portfolio-status></p>
+
+      <div class="portfolio-grid-wrap">
+        <div class="portfolio-grid" data-portfolio-grid>
+
+          <article class="portfolio-tile" data-sector="fintech" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="7" y="29" width="6" height="12" fill="currentColor" stroke="none"/><rect x="17" y="22" width="6" height="19" fill="currentColor" stroke="none"/><rect x="27" y="15" width="6" height="26" fill="currentColor" stroke="none"/><rect x="37" y="8" width="6" height="33"/></svg>
+              <h3 class="portfolio-tile__name">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Fintech</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="software" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="12.5"/><circle cx="24" cy="24" r="6" fill="currentColor" stroke="none"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--serif">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Software</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="consumer" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M22 8a16 16 0 0 0 0 32z" fill="currentColor" stroke="none"/><path d="M26 8a16 16 0 0 1 0 32z"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--caps">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Consumer</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="industrial" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M5 41h38v-7h-6v-7h-6v-7H17v7h-6v7H5z"/><path d="M17 20h14v-7H17z" fill="currentColor" stroke="none"/></svg>
+              <h3 class="portfolio-tile__name">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Industrial</p>
+          </article>
+
+          <article class="portfolio-tile portfolio-tile--featured portfolio-tile--f1" data-sector="software" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__art" aria-hidden="true">
+              <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" focusable="false"><g fill="none" stroke="#fff" stroke-opacity=".16"><circle cx="300" cy="96" r="40"/><circle cx="300" cy="96" r="80"/><circle cx="300" cy="96" r="120"/><circle cx="300" cy="96" r="160"/><circle cx="300" cy="96" r="200"/><circle cx="300" cy="96" r="240"/><circle cx="300" cy="96" r="280"/><circle cx="300" cy="96" r="320"/></g><g fill="#fff" fill-opacity=".5"><circle cx="220" cy="96" r="2.5"/><circle cx="300" cy="216" r="2"/><circle cx="140" cy="200" r="1.5"/><circle cx="360" cy="236" r="1.5"/></g></svg>
+            </div>
+            <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 6a18 18 0 1 1-18 18"/><path d="M24 12a12 12 0 1 1-12 12"/><path d="M24 18a6 6 0 1 1-6 6"/></svg>
+            <div class="portfolio-tile__body">
+              <p class="portfolio-tile__sector">Software</p>
+              <h3 class="portfolio-tile__name">Company name</h3>
+              <p class="portfolio-tile__desc">One-sentence description of what the company does.</p>
+            </div>
+          </article>
+
+          <article class="portfolio-tile" data-sector="health" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="15" r="8.5"/><circle cx="33" cy="24" r="8.5"/><circle cx="24" cy="33" r="8.5"/><circle cx="15" cy="24" r="8.5"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--serif">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Health</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="climate" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M5 15c4.75-4 9.5-4 14.25 0s9.5 4 14.25 0 6.5-3 9.5-1.5"/><path d="M5 24c4.75-4 9.5-4 14.25 0s9.5 4 14.25 0 6.5-3 9.5-1.5"/><path d="M5 33c4.75-4 9.5-4 14.25 0s9.5 4 14.25 0 6.5-3 9.5-1.5"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--caps">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Climate</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="fintech" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 4l7 7-7 7-7-7z" fill="currentColor" stroke="none"/><path d="M37 17l7 7-7 7-7-7z"/><path d="M24 30l7 7-7 7-7-7z" fill="currentColor" stroke="none"/><path d="M11 17l7 7-7 7-7-7z"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--serif">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Fintech</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="consumer" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="18"/><circle cx="30" cy="24" r="7.5" fill="currentColor" stroke="none"/></svg>
+              <h3 class="portfolio-tile__name">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Consumer</p>
+          </article>
+
+          <article class="portfolio-tile portfolio-tile--featured portfolio-tile--f2" data-sector="climate" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__art" aria-hidden="true">
+              <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" focusable="false"><defs><radialGradient id="portfolio-sun"><stop offset="0" stop-color="#fff4dc"/><stop offset=".6" stop-color="#ffd08a"/><stop offset="1" stop-color="#f29a55"/></radialGradient></defs><g fill="none" stroke="#fff" stroke-opacity=".2"><path d="M0 196h400"/><path d="M0 210h400" stroke-opacity=".15"/><path d="M0 228h400" stroke-opacity=".12"/><path d="M0 252h400" stroke-opacity=".09"/><path d="M0 282h400" stroke-opacity=".07"/><path d="M0 318h400" stroke-opacity=".05"/><path d="M180 196a60 60 0 0 1 120 0"/><path d="M140 196a100 100 0 0 1 200 0" stroke-opacity=".14"/><path d="M100 196a140 140 0 0 1 280 0" stroke-opacity=".09"/></g><path d="M212 196a28 28 0 0 1 56 0z" fill="url(#portfolio-sun)"/></svg>
+            </div>
+            <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M4 38l13-18 9 12 6-8 12 14z"/><circle cx="33" cy="12" r="4" fill="currentColor" stroke="none"/></svg>
+            <div class="portfolio-tile__body">
+              <p class="portfolio-tile__sector">Climate</p>
+              <h3 class="portfolio-tile__name">Company name</h3>
+              <p class="portfolio-tile__desc">One-sentence description of what the company does.</p>
+            </div>
+          </article>
+
+          <article class="portfolio-tile" data-sector="software" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 5l16.5 9.5v19L24 43 7.5 33.5v-19z"/><circle cx="24" cy="24" r="4.5" fill="currentColor" stroke="none"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--caps">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Software</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="industrial" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M17 6v36M31 6v36M6 17h36M6 31h36"/><rect x="17" y="17" width="14" height="14" fill="currentColor" stroke="none"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--serif">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Industrial</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="fintech" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="11" y="11" width="26" height="26"/><rect x="11" y="11" width="26" height="26" transform="rotate(45 24 24)"/></svg>
+              <h3 class="portfolio-tile__name">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Fintech</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="health" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="18" cy="24" r="13"/><circle cx="30" cy="24" r="13"/><path d="M24 12.47A13 13 0 0 1 24 35.53 13 13 0 0 1 24 12.47z" fill="currentColor" stroke="none"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--caps">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Health</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="climate" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M13 33a11 11 0 0 1 22 0" fill="currentColor" stroke="none"/><path d="M5 33h38M11 39h26M24 9v8M12.7 20.7l4.3 4.3M35.3 20.7L31 25M6 22.5l5.5 2M42 22.5l-5.5 2"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--serif">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Climate</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="consumer" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="6" y="6" width="23" height="23" rx="6"/><rect x="19" y="19" width="23" height="23" rx="6" fill="currentColor" stroke="none"/></svg>
+              <h3 class="portfolio-tile__name">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Consumer</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="software" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M9 9l15 11 15-11M9 19l15 11 15-11M9 29l15 11 15-11"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--caps">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Software</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="fintech" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M14.05 9h19.9M8.41 15h31.18M6.25 21h35.5M6.25 27h35.5M8.41 33h31.18M14.05 39h19.9" stroke-width="3"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--serif">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Fintech</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="industrial" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M32 24h11M29.66 29.66l7.77 7.77M24 32v11M18.34 29.66l-7.77 7.77M16 24H5M18.34 18.34l-7.77-7.77M24 16V5M29.66 18.34l7.77-7.77"/><circle cx="24" cy="24" r="4" fill="currentColor" stroke="none"/></svg>
+              <h3 class="portfolio-tile__name">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Industrial</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="climate" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M9 39C9 21 21 9 39 9c0 18-12 30-30 30z"/><path d="M9 39L29 19M17 31v-7M23 25h7"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--caps">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Climate</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="health" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 24V6a18 18 0 0 1 18 18z" fill="currentColor" stroke="none"/><path d="M24 24v18A18 18 0 0 1 6 24z" fill="currentColor" stroke="none"/><path d="M24 24H6A18 18 0 0 1 24 6zM24 24h18a18 18 0 0 1-18 18z"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--serif">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Health</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="consumer" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(-28 24 24)"/><circle cx="24" cy="24" r="5.5" fill="currentColor" stroke="none"/><circle cx="39.5" cy="15.5" r="2.5" fill="currentColor" stroke="none"/></svg>
+              <h3 class="portfolio-tile__name">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Consumer</p>
+          </article>
+
+          <article class="portfolio-tile portfolio-tile--featured portfolio-tile--f3" data-sector="health" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__art" aria-hidden="true">
+              <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" focusable="false"><g fill="none" stroke="#fff" stroke-opacity=".17"><path d="M-20 120C60 60 140 180 220 120s160-60 200 0"/><path d="M-20 150C60 90 140 210 220 150s160-60 200 0"/><path d="M-20 180C60 120 140 240 220 180s160-60 200 0"/><path d="M-20 210C60 150 140 270 220 210s160-60 200 0"/><path d="M-20 240C60 180 140 300 220 240s160-60 200 0"/></g><g fill="#fff" fill-opacity=".45"><circle cx="100" cy="146" r="3"/><circle cx="220" cy="180" r="2"/><circle cx="330" cy="152" r="2.5"/></g></svg>
+            </div>
+            <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M15 5c0 10 18 9 18 19s-18 9-18 19"/><path d="M33 5c0 10-18 9-18 19s18 9 18 19"/><path d="M18 12h12M18 36h12"/></svg>
+            <div class="portfolio-tile__body">
+              <p class="portfolio-tile__sector">Health</p>
+              <h3 class="portfolio-tile__name">Company name</h3>
+              <p class="portfolio-tile__desc">One-sentence description of what the company does.</p>
+            </div>
+          </article>
+
+          <article class="portfolio-tile" data-sector="software" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false" fill="currentColor" stroke="none"><circle cx="9" cy="9" r="1.5"/><circle cx="19" cy="9" r="1.9"/><circle cx="29" cy="9" r="2.3"/><circle cx="39" cy="9" r="2.7"/><circle cx="9" cy="19" r="1.9"/><circle cx="19" cy="19" r="2.3"/><circle cx="29" cy="19" r="2.7"/><circle cx="39" cy="19" r="3.1"/><circle cx="9" cy="29" r="2.3"/><circle cx="19" cy="29" r="2.7"/><circle cx="29" cy="29" r="3.1"/><circle cx="39" cy="29" r="3.5"/><circle cx="9" cy="39" r="2.7"/><circle cx="19" cy="39" r="3.1"/><circle cx="29" cy="39" r="3.5"/><circle cx="39" cy="39" r="4"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--caps">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Software</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="fintech" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M24 6l18 33H6z"/><path d="M24 23l8 14H16z" fill="currentColor" stroke="none"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--serif">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Fintech</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="climate" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M28 7.5A17 17 0 1 0 28 40.5 20 20 0 0 1 28 7.5z" fill="currentColor" stroke="none"/><circle cx="36" cy="17" r="2"/><circle cx="40" cy="28" r="1.5"/></svg>
+              <h3 class="portfolio-tile__name">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Climate</p>
+          </article>
+
+          <article class="portfolio-tile" data-sector="industrial" data-placeholder="portfolio-company">
+            <div class="portfolio-tile__mark portfolio-tile__mark--row">
+              <svg class="portfolio-tile__glyph" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="7" y="7" width="34" height="34"/><circle cx="24" cy="24" r="11"/><path d="M7 41L41 7"/></svg>
+              <h3 class="portfolio-tile__name portfolio-tile__name--caps">Company name</h3>
+            </div>
+            <p class="portfolio-tile__sector">Industrial</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="up-next" aria-labelledby="portfolio-next-title">
+      <h2 class="visually-hidden" id="portfolio-next-title">Up next</h2>
+      <a class="bracket-link bracket-link--serif reveal" href="team.html">Meet the team</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <span>&copy; Denimes <span data-year>2026</span></span>
+      <a class="legal-link" href="legal.html">Legal.</a>
+    </div>
+    <address data-placeholder="address">[Street address], [City]</address>
+  </footer>
+
+  <script src="assets/js/globe-data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/portfolio.js"></script>
+</body>
+</html>

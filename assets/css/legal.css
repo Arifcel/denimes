@@ -1,0 +1,350 @@
+/* ==========================================================================
+   Denimes — legal and login pages
+   Legal: paper page with a faint fixed globe, centred title, placeholder
+   notice, CSS-only document tabs (:target) and numbered placeholder sections.
+   Login: one-screen dark page with a globe rising from the bottom edge and a
+   single bracket link out to the external portal (no credential fields).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Legal
+   -------------------------------------------------------------------------- */
+
+.page-legal {
+  --legal-col: 48.5rem;                 /* text column, ≈776px */
+  --legal-tab-bg: var(--white);
+}
+
+.legal-globe {
+  position: fixed;
+}
+
+.legal,
+.legal-next {
+  position: relative;
+  z-index: 1;
+}
+
+.legal {
+  padding: calc(var(--header-h) + 64px) var(--gutter) 0;
+}
+
+/* Hash targets for the tabs; fixed, so they are always in view and
+   switching tabs never scrolls the page */
+.legal-anchor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.legal-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: var(--legal-col);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.legal-notice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 38rem;
+  margin-top: 38px;
+  padding: 18px 28px 19px;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+
+.legal-notice__label {
+  color: var(--wine);
+}
+
+.legal-notice__text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-variation-settings: "opsz" 24;
+  text-wrap: balance;
+}
+
+/* Tabs */
+.legal-tabs {
+  max-width: var(--legal-col);
+  margin: 44px auto 0;
+}
+
+.legal-tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--hair);
+}
+
+.legal-tabs__link {
+  display: block;
+  margin-bottom: -1px;
+  padding: 10px 16px 11px;
+  border: 1px solid transparent;
+  border-radius: 6px 6px 0 0;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  transition: color 0.3s var(--ease), background-color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.legal-tabs__link:hover {
+  color: var(--wine);
+}
+
+.legal-tabs__link:focus-visible {
+  outline-offset: -5px;
+}
+
+.legal-tabs__link--terms,
+#privacy:target ~ .legal-tabs .legal-tabs__link--privacy,
+#disclosures:target ~ .legal-tabs .legal-tabs__link--disclosures {
+  background: var(--legal-tab-bg);
+  border-color: var(--hair) var(--hair) var(--legal-tab-bg);
+}
+
+#privacy:target ~ .legal-tabs .legal-tabs__link--terms,
+#disclosures:target ~ .legal-tabs .legal-tabs__link--terms {
+  background: transparent;
+  border-color: transparent;
+}
+
+/* Documents: terms by default, the others when their hash is targeted */
+.legal-docs {
+  max-width: var(--legal-col);
+  margin: 0 auto;
+  padding-top: 54px;
+}
+
+.legal-doc {
+  display: none;
+}
+
+.legal-doc--terms,
+#privacy:target ~ .legal-docs .legal-doc--privacy,
+#disclosures:target ~ .legal-docs .legal-doc--disclosures {
+  display: block;
+}
+
+#privacy:target ~ .legal-docs .legal-doc--terms,
+#disclosures:target ~ .legal-docs .legal-doc--terms {
+  display: none;
+}
+
+.legal-doc__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 1.4vw + 1.35rem, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 60;
+}
+
+.legal-doc__meta {
+  margin-top: 14px;
+  font-size: var(--fs-small);
+  letter-spacing: 0.02em;
+  color: var(--fg-soft);
+}
+
+.legal-sec {
+  margin-top: 40px;
+  line-height: 1.48;
+}
+
+.legal-sec + .legal-sec {
+  margin-top: 34px;
+}
+
+.legal-sec__title {
+  margin-bottom: 12px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.legal-sec__num {
+  margin-right: 0.12em;
+  color: var(--wine);
+  font-style: normal;
+}
+
+.legal-sec p + p {
+  margin-top: 6px;
+}
+
+.legal-sec__todo {
+  color: var(--wine);
+}
+
+.legal-next .bracket-link {
+  width: min(640px, 100%);
+}
+
+@media (max-width: 768px) {
+  .legal {
+    padding: calc(var(--header-h) + 48px) calc(var(--gutter) + 14px) 0;
+  }
+
+  .legal-notice {
+    margin-top: 30px;
+    padding-inline: 8px;
+  }
+
+  .legal-notice__text {
+    font-size: 1.125rem;
+  }
+
+  .legal-tabs {
+    margin-top: 36px;
+  }
+
+  .legal-tabs__link {
+    font-size: 1.0625rem;
+  }
+
+  .legal-docs {
+    padding-top: 42px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Login
+   -------------------------------------------------------------------------- */
+
+.page-login {
+  --login-top: #242323;
+  --login-globe: clamp(560px, 80vw, 1200px);
+  --login-peek: 34svh;                  /* visible height of the globe cap */
+  background:
+    radial-gradient(90% 60% at 50% 118%, rgba(122, 31, 43, 0.4), rgba(122, 31, 43, 0) 66%),
+    linear-gradient(180deg, var(--login-top) 0%, #262525 60%, #2a2626 100%);
+  background-attachment: fixed;
+}
+
+.login {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(var(--header-h) + 12px) var(--gutter) max(19vh, 150px);
+  overflow: hidden;
+}
+
+/* Square canvas; only its upper cap shows above the fold */
+.login-globe {
+  inset: auto;
+  top: calc(100% - var(--login-peek));
+  left: 50%;
+  width: var(--login-globe);
+  height: var(--login-globe);
+  margin-left: calc(var(--login-globe) / -2);
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(var(--login-peek) - 150px), rgba(0, 0, 0, 0.18) var(--login-peek));
+  mask-image: linear-gradient(180deg, #000 0, #000 calc(var(--login-peek) - 150px), rgba(0, 0, 0, 0.18) var(--login-peek));
+}
+
+.login-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 40rem;
+  text-align: center;
+}
+
+.login-eyebrow {
+  color: var(--fg-soft);
+}
+
+.login-title {
+  margin-top: 26px;
+  font-size: clamp(2.9rem, 4.2vw + 1rem, 5.1rem);
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+}
+
+.login-lead {
+  max-width: 26em;
+  margin-top: 22px;
+  color: var(--fg-soft);
+  text-wrap: balance;
+}
+
+.login-cta {
+  min-width: min(320px, 100%);
+  margin-top: 46px;
+}
+
+.login-help {
+  margin-top: 30px;
+  font-size: var(--fs-small);
+  color: var(--fg-soft);
+}
+
+.login-help a {
+  color: var(--fg);
+  border-bottom: 1px solid var(--white-mute);
+  transition: border-color 0.3s var(--ease);
+}
+
+.login-help a:hover {
+  border-color: var(--fg);
+}
+
+/* Header link reads as the current page */
+.page-login .login-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  .login {
+    padding-bottom: max(24vh, 170px);
+  }
+
+  .page-login {
+    --login-peek: 32svh;
+  }
+
+  .login-cta {
+    margin-top: 38px;
+  }
+
+  .page-login .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* Laptop-height screens: tighten the bottom so the page still fits one view */
+@media (max-height: 680px) {
+  .login {
+    padding-bottom: 100px;
+  }
+}
+
+/* Short screens: let the page scroll instead of overlapping the footer */
+@media (max-height: 600px) {
+  .page-login .site-footer {
+    position: relative;
+  }
+
+  .login {
+    padding-bottom: 72px;
+  }
+}

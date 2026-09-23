@@ -1,0 +1,600 @@
+/* ==========================================================================
+   Denimes — blog
+   Shared by blog.html and post.html: a post index over a faded globe with
+   generative art tiles, and a single-column reading layout for articles.
+   ========================================================================== */
+
+.page-blog,
+.page-post {
+  --blog-tick: color-mix(in srgb, var(--fg) 45%, transparent);
+  --blog-entry-rule: color-mix(in srgb, var(--fg) 35%, transparent);
+}
+
+.page-blog .eyebrow-stack::after,
+.page-post .eyebrow-stack::after {
+  background: var(--blog-tick);
+}
+
+/* --------------------------------------------------------------------------
+   Index header
+   -------------------------------------------------------------------------- */
+
+.blog-index {
+  position: relative;
+  padding-top: calc(var(--header-h) + 4px);
+}
+
+/* Globe sits behind the header and the first entries only */
+.blog-index__globe {
+  bottom: auto;
+  height: 980px;
+}
+
+.blog-index__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--gutter);
+  text-align: center;
+}
+
+.blog-index__eyebrow {
+  color: var(--wine);
+}
+
+.blog-index__title {
+  max-width: 14em;
+  margin-top: 26px;
+  text-wrap: balance;
+}
+
+.blog-index__intro {
+  max-width: 34rem;
+  margin-top: 20px;
+  font-size: 1.125rem;
+  line-height: 1.45;
+  color: var(--fg-soft);
+  text-wrap: balance;
+}
+
+/* --------------------------------------------------------------------------
+   Post list
+   -------------------------------------------------------------------------- */
+
+.blog-list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(72px, 7vw, 104px);
+  width: min(860px, 100% - 2 * var(--gutter));
+  margin: clamp(64px, 8vw, 112px) auto 0;
+}
+
+.blog-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 495fr) minmax(0, 335fr);
+  column-gap: 30px;
+  align-items: center;
+}
+
+.blog-entry__date {
+  margin-bottom: 14px;
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--fg-soft);
+}
+
+.blog-entry__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: clamp(1.6rem, 1.4vw + 1.1rem, 2.375rem);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.blog-entry__title a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.6s var(--ease-out);
+}
+
+/* The title link covers the whole entry; "Read more" stays on top of it */
+.blog-entry__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.blog-entry:hover .blog-entry__title a,
+.blog-entry__title a:focus-visible {
+  background-size: 100% 1px;
+}
+
+.blog-entry__excerpt {
+  margin-top: 16px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.blog-entry__more {
+  position: relative;
+  z-index: 2;
+  color: var(--wine);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.3s var(--ease);
+}
+
+.blog-entry__more:hover,
+.blog-entry__more:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+.blog-entry__media {
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Generative art tiles — stand-ins for each post's cover image
+   -------------------------------------------------------------------------- */
+
+.blog-art {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background-color: var(--paper-blush);
+  transition: transform 1.1s var(--ease-out);
+}
+
+.blog-art::before,
+.blog-art::after {
+  content: "";
+  position: absolute;
+}
+
+.blog-entry:hover .blog-art {
+  transform: scale(1.03);
+}
+
+/* Rings rising from the lower-left corner */
+.blog-art--rings {
+  background:
+    radial-gradient(circle at 0 100%, var(--wine) 0 17%, transparent 17.2%),
+    repeating-radial-gradient(circle at 0 100%, transparent 0 13px, rgba(122, 31, 43, 0.5) 13px 14px),
+    var(--paper-blush);
+}
+
+/* A disc seen through horizontal slats */
+.blog-art--blinds {
+  background:
+    repeating-linear-gradient(to bottom, var(--paper-mist) 0 6px, transparent 6px 13px),
+    radial-gradient(circle closest-side at 62% 50%, var(--wine) 0 70%, transparent 70.5%),
+    var(--paper-mist);
+}
+
+.blog-art--blinds::after {
+  inset: 0 auto 0 18%;
+  width: 1px;
+  background: var(--ink);
+  opacity: 0.5;
+}
+
+/* A doorway with a low sun, on graphite */
+.blog-art--arch {
+  background:
+    linear-gradient(to bottom, transparent 76%, var(--night) 76%),
+    var(--graphite);
+}
+
+.blog-art--arch::before {
+  left: 36%;
+  bottom: 24%;
+  width: 28%;
+  height: 58%;
+  border-radius: 999px 999px 0 0;
+  background:
+    radial-gradient(circle closest-side at 50% 72%, var(--wine) 0 50%, transparent 51%),
+    var(--paper-blush);
+}
+
+.blog-art--arch::after {
+  left: 0;
+  right: 0;
+  bottom: 24%;
+  height: 1px;
+  background: var(--paper-blush);
+  opacity: 0.5;
+}
+
+/* Dot grid with one filled circle */
+.blog-art--dots {
+  background:
+    radial-gradient(circle closest-side at 30% 56%, var(--wine) 0 72%, transparent 73%),
+    radial-gradient(circle, rgba(45, 45, 45, 0.45) 0 1.2px, transparent 1.7px) 7px 7px / 14px 14px,
+    var(--paper-mist);
+}
+
+/* Checker of pale squares with a quarter disc */
+.blog-art--tiles {
+  background:
+    radial-gradient(circle at 100% 100%, var(--wine) 0 44%, transparent 44.3%),
+    conic-gradient(var(--paper-mist) 0 25%, var(--paper) 0 50%, var(--paper-mist) 0 75%, var(--paper) 0) 0 0 / 48px 48px,
+    var(--paper);
+}
+
+.blog-art--tiles::after {
+  inset: 0;
+  border: 1px solid var(--hair);
+}
+
+/* Setting sun over dark ground */
+.blog-art--horizon {
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 11px, rgba(241, 238, 228, 0.14) 11px 12px) 0 64% / 100% 36% no-repeat,
+    linear-gradient(to bottom, transparent 64%, var(--moss) 64%),
+    radial-gradient(circle closest-side at 50% 64%, var(--wine) 0 36%, transparent 36.5%),
+    linear-gradient(to bottom, var(--paper-blush), var(--paper) 64%);
+}
+
+/* --------------------------------------------------------------------------
+   Older posts
+   -------------------------------------------------------------------------- */
+
+.blog-older {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding: clamp(80px, 9vw, 128px) var(--gutter) clamp(24px, 4vw, 40px);
+}
+
+.blog-older__link {
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.3s var(--ease);
+}
+
+.blog-older__link[href]:hover,
+.blog-older__link:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   Post header
+   -------------------------------------------------------------------------- */
+
+.post-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(var(--header-h) + 4px) var(--gutter) 0;
+  text-align: center;
+}
+
+.post-back {
+  position: absolute;
+  top: calc(var(--header-h) - 1px);
+  left: var(--gutter);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--fg-soft);
+  transition: color 0.3s var(--ease);
+}
+
+.post-back__arrow {
+  width: 20px;
+  height: 10px;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.post-back:hover,
+.post-back:focus-visible {
+  color: var(--fg);
+}
+
+.post-back:hover .post-back__arrow {
+  transform: translateX(-4px);
+}
+
+.post-hero__eyebrow {
+  color: var(--wine);
+}
+
+.post-hero__title {
+  max-width: 15em;
+  margin-top: 26px;
+  text-wrap: balance;
+}
+
+.post-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px 14px;
+  margin-top: 26px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--fg-soft);
+}
+
+.post-hero__dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   Post body
+   -------------------------------------------------------------------------- */
+
+.post-body {
+  width: min(var(--measure), 100% - 2 * var(--gutter));
+  margin: clamp(52px, 7vw, 88px) auto 0;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.post-body > * + * {
+  margin-top: 1.35rem;
+}
+
+.post-body__lead + p {
+  margin-top: 2.25rem;
+}
+
+.post-body h2 {
+  margin-top: clamp(3rem, 4vw, 4rem);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: clamp(1.6rem, 1vw + 1.2rem, 2.1rem);
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.post-body h2 + p {
+  margin-top: 1rem;
+}
+
+.post-body p a {
+  color: var(--wine);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Pull quote */
+.post-body > .post-quote {
+  margin: clamp(2.75rem, 4vw, 3.5rem) 0;
+  padding-left: 28px;
+  border-left: 1px solid var(--wine);
+}
+
+.post-quote blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: clamp(1.45rem, 0.9vw + 1.1rem, 1.85rem);
+  line-height: 1.35;
+  letter-spacing: -0.003em;
+}
+
+.post-quote figcaption {
+  margin-top: 18px;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--fg-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Figure — breaks out of the text column on wide screens
+   -------------------------------------------------------------------------- */
+
+/* Sized against the article rather than 100vw, which includes the scrollbar */
+.post {
+  container-type: inline-size;
+}
+
+.post-body > .post-figure {
+  position: relative;
+  left: 50%;
+  width: min(1100px, 100cqi - 2 * var(--gutter));
+  margin: clamp(3rem, 5vw, 4.5rem) 0;
+  transform: translateX(-50%);
+}
+
+.post-figure__frame {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--moss);
+}
+
+.post-figure__art {
+  width: 100%;
+  height: 100%;
+}
+
+.post-figure__caption {
+  width: min(var(--measure), 100%);
+  margin: 14px auto 0;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--fg-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Author
+   -------------------------------------------------------------------------- */
+
+.post-author {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: min(var(--measure), 100% - 2 * var(--gutter));
+  margin: clamp(56px, 7vw, 88px) auto 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--hair);
+}
+
+.post-author__avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--paper-blush);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: var(--wine);
+}
+
+.post-author__name {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.post-author__role {
+  margin-top: 2px;
+  font-size: var(--fs-small);
+  line-height: 1.4;
+  color: var(--fg-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Up next
+   -------------------------------------------------------------------------- */
+
+.post-next {
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.post-next__eyebrow {
+  color: var(--wine);
+}
+
+/* --------------------------------------------------------------------------
+   Reading progress (added by blog.js)
+   -------------------------------------------------------------------------- */
+
+.post-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 70;
+  height: 2px;
+  background: var(--wine);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease);
+}
+
+.menu-open .post-progress {
+  opacity: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .post-back {
+    position: static;
+    align-self: flex-start;
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-index__globe {
+    height: 760px;
+  }
+
+  .blog-list {
+    margin-top: 56px;
+  }
+
+  .blog-entry {
+    column-gap: 22px;
+  }
+
+  .blog-entry__excerpt {
+    font-size: 1rem;
+  }
+
+  .post-back {
+    margin-bottom: 28px;
+  }
+
+  .post-body {
+    font-size: 1.0625rem;
+  }
+
+  .post-body > .post-quote {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-index__title {
+    margin-top: 22px;
+  }
+
+  .blog-index__intro {
+    font-size: 1rem;
+  }
+
+  .blog-list {
+    gap: 56px;
+  }
+
+  .blog-entry {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 26px;
+    border-top: 1px solid var(--blog-entry-rule);
+  }
+
+  .blog-entry__media {
+    margin-top: 28px;
+  }
+
+  .blog-older {
+    padding-top: 72px;
+  }
+
+  .post-hero__meta {
+    font-size: var(--fs-small);
+  }
+}

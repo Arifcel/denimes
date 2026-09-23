@@ -1,0 +1,427 @@
+/* ==========================================================================
+   Denimes — partners page
+   Near-black hero with the rotating globe, stats and a dotted region map,
+   then a moss section with the industry grid, four ways we help and a CTA.
+   ========================================================================== */
+
+.page-partners {
+  --partners-ink: #151818;              /* hero near-black */
+  --partners-glow: 86, 110, 178;        /* soft blue, used as rgba() */
+  --partners-accent: 176, 52, 66;       /* wine dot, matches the map accent */
+  --partners-line: rgba(255, 255, 255, 0.5);
+  --partners-mute: rgba(255, 255, 255, 0.62);
+  --partners-inset: 20px;               /* how far frame rules sit from the edges */
+  background: var(--moss);
+}
+
+/* Keep overscroll the same colour as the page */
+html:has(> body.page-partners) {
+  background: var(--moss);
+}
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.partners-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(var(--header-h) + 40px) var(--gutter) clamp(88px, 9vw, 128px);
+  overflow: hidden;
+  background:
+    radial-gradient(48% 44% at 50% 100%, rgba(var(--partners-glow), 0.34) 0%, rgba(var(--partners-glow), 0.14) 48%, rgba(var(--partners-glow), 0) 100%),
+    var(--partners-ink);
+}
+
+/* Globe fills the first screen only, so it stays behind the title and stats */
+.partners-hero .globe-layer {
+  bottom: auto;
+  height: 100vh;
+  height: 100svh;
+}
+
+.partners-hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.partners-hero__title {
+  margin-top: clamp(28px, 3.4vh, 40px);
+  text-wrap: balance;
+}
+
+.partners-hero__title .line {
+  display: block;
+}
+
+/* Stats ------------------------------------------------------------------ */
+
+.partners-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(24px, 3vw, 40px);
+  width: 100%;
+  margin-top: clamp(56px, 8vh, 84px);
+}
+
+.partners-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 1 240px;
+  gap: 14px;
+}
+
+.partners-stat__value {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-variation-settings: "opsz" 72;
+  font-size: clamp(3rem, 3.4vw + 1.2rem, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-variant-numeric: lining-nums;
+}
+
+.partners-stat__label {
+  max-width: 15em;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  color: var(--partners-mute);
+  text-wrap: balance;
+}
+
+/* Intro paragraph + region map ------------------------------------------- */
+
+.partners-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 232px;
+  gap: clamp(40px, 5vw, 64px);
+  align-items: start;
+  width: 100%;
+  max-width: 940px;
+  margin-top: clamp(80px, 11vh, 120px);
+  text-align: left;
+}
+
+.partners-intro__text p {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  max-width: 40em;
+}
+
+.partners-map {
+  padding-top: 4px;
+}
+
+.partners-map__canvas {
+  width: 100%;
+  aspect-ratio: 144 / 57;
+}
+
+.partners-map__label {
+  margin-top: 22px;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--partners-mute);
+}
+
+.partners-map__list {
+  margin-top: 8px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.partners-map__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Small wine square, the same mark the map uses for highlighted regions */
+.partners-map__list li::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 5px;
+  height: 5px;
+  background: rgb(var(--partners-accent));
+}
+
+/* --------------------------------------------------------------------------
+   Moss sections
+   -------------------------------------------------------------------------- */
+
+.partners-heading {
+  margin: 0 auto clamp(40px, 4vw, 52px);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-variation-settings: "opsz" 48;
+  font-size: clamp(1.55rem, 0.7vw + 1.1rem, 1.875rem);
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Industries ------------------------------------------------------------- */
+
+.partners-industries {
+  padding: clamp(88px, 8vw, 112px) var(--gutter) 0;
+}
+
+.partners-industries__grid {
+  position: relative;
+  max-width: 1320px;
+  margin: calc(var(--partners-inset) + 4px) auto 0;
+  padding: 0 var(--partners-inset);
+  column-count: 4;
+  column-gap: calc(var(--partners-inset) * 2);
+  column-rule: 1px solid var(--partners-line);
+  border-left: 1px solid var(--partners-line);
+  border-right: 1px solid var(--partners-line);
+  font-size: clamp(1.0625rem, 0.55vw + 1rem, 1.5rem);
+  line-height: 1.42;
+  letter-spacing: 0.01em;
+}
+
+/* Rules above and below, pulled in from the sides like the bracket link */
+.partners-industries__grid::before,
+.partners-industries__grid::after {
+  content: "";
+  position: absolute;
+  left: var(--partners-inset);
+  right: var(--partners-inset);
+  height: 1px;
+  background: var(--partners-line);
+}
+
+.partners-industries__grid::before {
+  top: calc(var(--partners-inset) * -1);
+}
+
+.partners-industries__grid::after {
+  bottom: calc(var(--partners-inset) * -1);
+}
+
+.partners-industries__grid li {
+  break-inside: avoid;
+}
+
+/* Ways we work ----------------------------------------------------------- */
+
+.partners-ways {
+  padding: clamp(96px, 9vw, 128px) var(--gutter) 0;
+}
+
+/* The cells carry their own padding, so the heading needs less room */
+.partners-ways .partners-heading {
+  margin-bottom: clamp(12px, 2vw, 28px);
+}
+
+.partners-ways__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.partners-way {
+  padding: clamp(32px, 3.5vw, 50px);
+}
+
+.partners-way__title {
+  font-size: clamp(1.2rem, 0.55vw + 1rem, 1.5rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.005em;
+}
+
+.partners-way__text {
+  margin-top: 14px;
+  max-width: 24em;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--partners-mute);
+}
+
+/* The cross between the four cells: short segments with a gap at the centre */
+.partners-ways__rule {
+  position: absolute;
+  pointer-events: none;
+}
+
+.partners-ways__rule--v {
+  left: calc(50% - 0.5px);
+  top: calc(50% - 70px);
+  width: 1px;
+  height: 140px;
+  background: linear-gradient(to bottom, var(--partners-line) 0 50px, transparent 50px 90px, var(--partners-line) 90px 100%);
+}
+
+.partners-ways__rule--h {
+  left: calc(50% - 120px);
+  top: calc(50% - 0.5px);
+  width: 240px;
+  height: 1px;
+  background: linear-gradient(to right, var(--partners-line) 0 100px, transparent 100px 140px, var(--partners-line) 140px 100%);
+}
+
+/* Horizontal segment grows out from the centre instead of downward */
+.js .partners-ways__rule--h.reveal-line {
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+.js .partners-ways__rule--h.reveal-line.is-visible {
+  transform: none;
+}
+
+/* CTA -------------------------------------------------------------------- */
+
+.page-partners .up-next {
+  padding-top: clamp(80px, 9vw, 128px);
+  padding-bottom: clamp(64px, 7vw, 104px);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .partners-industries__grid {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 860px) {
+  .partners-intro {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 640px;
+  }
+
+  .partners-map {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    column-gap: 32px;
+    align-items: start;
+  }
+
+  .partners-map__canvas {
+    grid-row: 1 / span 2;
+  }
+
+  .partners-map__label {
+    margin-top: 0;
+  }
+
+  .partners-ways__grid {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-hero {
+    padding-top: calc(var(--header-h) + 28px);
+  }
+
+  .partners-industries__grid {
+    column-count: 2;
+  }
+
+  .page-partners .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .partners-hero__title .line {
+    display: inline;
+  }
+
+  .partners-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .partners-stat {
+    flex-basis: auto;
+    gap: 10px;
+  }
+
+  .partners-stat__value {
+    font-size: 3.25rem;
+  }
+
+  .partners-stat__label {
+    max-width: 13em;
+    font-size: 1rem;
+  }
+
+  .partners-map {
+    display: block;
+    max-width: 340px;
+  }
+
+  .partners-map__label {
+    margin-top: 20px;
+  }
+
+  .partners-map__list {
+    columns: 2;
+    column-gap: 24px;
+  }
+
+  .partners-industries__grid {
+    --partners-inset: 14px;
+    font-size: 1.0625rem;
+  }
+
+  /* Cells stack; a short rule separates them instead of the cross */
+  .partners-ways .partners-heading {
+    margin-bottom: 36px;
+  }
+
+  .partners-ways__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .partners-ways__rule {
+    display: none;
+  }
+
+  .partners-way {
+    padding: 28px 0;
+  }
+
+  .partners-way:first-of-type {
+    padding-top: 0;
+  }
+
+  .partners-way + .partners-way::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 1px;
+    margin-bottom: 28px;
+    background: var(--partners-line);
+  }
+}
+
+/* Narrow phones: tighten the frame so two-word industries stay on one line */
+@media (max-width: 374px) {
+  .partners-industries__grid {
+    --partners-inset: 10px;
+    font-size: 0.9375rem;
+    letter-spacing: 0;
+  }
+}

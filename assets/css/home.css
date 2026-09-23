@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Denimes — home page
+   One-screen hero: soft paper gradient, rotating dotted globe, centred title.
+   ========================================================================== */
+
+.page-home {
+  background:
+    radial-gradient(70% 55% at 50% 100%, rgba(241, 238, 228, 1) 0%, rgba(241, 238, 228, 0.9) 35%, rgba(241, 238, 228, 0) 75%),
+    radial-gradient(40% 45% at 0% 100%, rgba(230, 214, 205, 0.9), rgba(230, 214, 205, 0) 70%),
+    radial-gradient(40% 45% at 100% 100%, rgba(230, 214, 205, 0.9), rgba(230, 214, 205, 0) 70%),
+    linear-gradient(180deg, var(--paper-mist) 0%, #e2e1d9 45%, #ebe8de 100%);
+  background-attachment: fixed;
+}
+
+.home-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--header-h) var(--gutter) 88px;
+  overflow: hidden;
+}
+
+.home-hero .globe-layer {
+  position: fixed;
+}
+
+.home-hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(28px, 3.4vh, 40px);
+  max-width: 60rem;
+  text-align: center;
+}
+
+.home-hero__title {
+  text-wrap: balance;
+}
+
+.home-hero__title .line {
+  display: block;
+}
+
+.home-hero .bracket-link {
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    padding-bottom: 120px;
+  }
+
+  .page-home .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* Short landscape screens: let the page scroll instead of overlapping the footer */
+@media (max-height: 520px) {
+  .footer-fixed .site-footer {
+    position: relative;
+  }
+}
